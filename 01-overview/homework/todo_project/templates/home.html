@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Home - TODO App{% endblock %}
+
+{% block header_buttons %}
+<a class="btn" href="{% url 'create' %}">➕ Add TODO</a>
+{% endblock %}
+
+{% block content %}
+<h1>TODO List</h1>
+
+{% for todo in todos %}
+    <div class="todo-item">
+
+        <div class="todo-info" style="flex: 1;">
+            <span class="todo-title {% if todo.resolved %}resolved{% endif %}">
+                {{ todo.title }}
+            </span>
+
+            <small>Due: {{ todo.due_date }}</small>
+        </div>
+
+        <div class="buttons">
+            <a class="btn" href="{% url 'resolve' todo.pk %}">
+                {% if todo.resolved %}Unresolve{% else %}Resolve{% endif %}
+            </a>
+
+            <a class="btn" href="{% url 'edit' todo.pk %}">Edit</a>
+
+            <a class="btn btn-danger" href="{% url 'delete' todo.pk %}">Delete</a>
+        </div>
+
+    </div>
+{% empty %}
+    <p>No TODOs yet.</p>
+{% endfor %}
+{% endblock %}

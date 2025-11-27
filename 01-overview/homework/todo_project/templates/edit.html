@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Edit TODO{% endblock %}
+
+{% block content %}
+<h1>Edit TODO</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Title:</label><br>
+    <input name="title" value="{{ todo.title }}" required><br><br>
+
+    <label>Due Date:</label><br>
+    <input type="date" name="due_date" required><br><br>
+
+    <button class="btn" type="submit">Save</button>
+</form>
+{% endblock %}

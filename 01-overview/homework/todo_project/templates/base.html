@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}TODO App{% endblock %}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f3f3f3;
+        }
+
+        h1 {
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            background: #0077cc;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .btn:hover {
+            background: #005fa3;
+        }
+
+        .btn-danger {
+            background: #d23c3c;
+        }
+
+        .btn-danger:hover {
+            background: #a82828;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+        }
+
+        .todo-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* takes most of the horizontal space */
+            margin-right: 15px;
+        }
+
+        .todo-title {
+            font-size: 18px;
+        }
+
+        .resolved {
+            text-decoration: line-through;
+            color: #777;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <a class="btn" href="{% url 'home' %}">🏠 Home</a>
+        {% block header_buttons %}{% endblock %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

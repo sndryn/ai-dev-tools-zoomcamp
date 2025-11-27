@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Create TODO{% endblock %}
+
+{% block content %}
+<h1>Create TODO</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Title:</label><br>
+    <input name="title" required><br><br>
+
+    <label>Due Date:</label><br>
+    <input type="date" name="due_date" required><br><br>
+
+    <button class="btn" type="submit">Create</button>
+</form>
+{% endblock %}

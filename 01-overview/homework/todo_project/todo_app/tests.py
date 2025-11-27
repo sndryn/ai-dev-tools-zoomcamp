@@ -4,12 +4,8 @@ from .models import Todo
 
 
 class TodoViewsTest(TestCase):
-
     def setUp(self):
-        self.todo = Todo.objects.create(
-            title="Test TODO",
-            due_date="2025-01-01"
-        )
+        self.todo = Todo.objects.create(title="Test TODO", due_date="2025-01-01")
 
     # HOME VIEW
     def test_home_view(self):
@@ -19,22 +15,19 @@ class TodoViewsTest(TestCase):
 
     # CREATE VIEW
     def test_create_view(self):
-        response = self.client.post(reverse("create"), {
-            "title": "New TODO",
-            "due_date": "2025-12-31"
-        })
+        response = self.client.post(
+            reverse("create"), {"title": "New TODO", "due_date": "2025-12-31"}
+        )
         self.assertEqual(response.status_code, 302)  # redirect
 
-        self.assertTrue(
-            Todo.objects.filter(title="New TODO").exists()
-        )
+        self.assertTrue(Todo.objects.filter(title="New TODO").exists())
 
     # EDIT VIEW
     def test_edit_view(self):
-        response = self.client.post(reverse("edit", args=[self.todo.pk]), {
-            "title": "Updated Title",
-            "due_date": "2025-03-01"
-        })
+        response = self.client.post(
+            reverse("edit", args=[self.todo.pk]),
+            {"title": "Updated Title", "due_date": "2025-03-01"},
+        )
         self.assertEqual(response.status_code, 302)
 
         self.todo.refresh_from_db()

@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"fastmcp": {
+			"type": "stdio",
+			"command": "uv",
+			"args": [
+				"run",
+				"03-mcp/homework/main.py"
+			]
+		}
+	},
+	"inputs": []
+}
